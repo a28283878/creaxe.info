@@ -1,0 +1,76 @@
+﻿@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Styles.Render("~/Content/ntustindex")
+@Scripts.Render("~/bundles/ntustindex")
+@model List<Class_Blog.Models.ClassModels>
+<!DOCTYPE html>
+<html lang="en">
+@{
+    @Html.Partial("_NavPartial");
+}
+<head>
+    <link rel="stylesheet" href="@Url.Content("~/Content/Classes.css")">
+</head>
+<body>
+    <div class="row" style="width:100%; height:100px;"></div>
+    <div class="animsition">
+
+        <div class="container">
+            <h2 class="tag">課程列表</h2>
+
+            @{
+                foreach (var Class in Model)
+                {
+                    <div class="col-md-6" style="padding:10px 15px 10px 15px;margin-top:10px; margin-bottom:10px;">
+                        <a href="/Nccu/ClassDetail?ID=@Class.ID">
+                            <div class="newsblock wow fadeInDown">
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <span class="post-tag post-tag-school">創造力學程</span>
+
+                                        <h3 class="title-height">
+                                            @Class.Name
+                                        </h3>
+
+                                        <hr style="width: 100%; border-top: 1px solid #ccc; margin-top:2px;">                                     
+                                        <div class="post-tag post-tag-detail">@(@Class.Type.ToString().Equals("0") ? "選修" : "必修")</div>
+                                        <div class="post-tag post-tag-detail">@Class.Semester 學期</div>
+                                        <div class="post-tag post-tag-detail">@Class.Point 學分</div>
+                                    </div>
+                                    @if (@Class.Class_teacher != 0)
+                                    {
+                                        <div class="hidden-xs col-sm-4">
+                                            <img class="img-circle img-responsive img-center" src="@Href(@Class.ClassTeacher.PictureUrl)" alt="">
+                                            <h4 style="text-align:center;">@Class.ClassTeacher.Name</h4>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="hidden-xs col-sm-4">
+                                            <img class="img-circle img-responsive img-center" src="~/img/coming_soon.jpg" />
+                                            <h4 style="text-align:center;">日後公布</h4>
+                                        </div>
+                                    }
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            }
+
+        </div>
+
+
+
+        <footer>
+            <div class="container">
+                <div class="col-xs-12">
+                    <hr style="width: 100%; border-top: 1px solid #ccc; margin-top:50px;">
+                    <span class="copyright text-muted">Richard 2017</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

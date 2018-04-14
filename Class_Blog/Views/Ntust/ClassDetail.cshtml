@@ -1,0 +1,128 @@
+﻿@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Styles.Render("~/Content/ntustindex")
+@model Class_Blog.Models.ClassModels
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta property="fb:app_id" content="846268078859223" />
+    @{
+        @Html.Partial("_NavPartial");
+    }
+    <link rel="stylesheet" href="@Url.Content("~/Content/ClassDetail.css")">
+</head>
+<body>
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.9&appId=846268078859223";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+    <!-- Post Content -->
+    <div style="width:100%; height:80px;"></div>
+    <div class="animsition">
+        <article>
+            <div class="container">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="font-family: '微軟正黑體', 'Microsoft JhengHei';">
+                    <span class="post-tag post-tag-school">國立台灣科技大學</span>
+                    <h3 class="post-title">
+                        @Model.Name
+                    </h3>
+                    @if (Model.Type == 0)
+                    {
+                        <div class="post-tag post-tag-detail">選修</div>
+                    }
+                    else
+                    {
+                        <div class="post-tag post-tag-detail">必修</div>
+                    }
+                    <div class="post-tag post-tag-detail">@Model.Semester 學期</div>
+                    <div class="post-tag post-tag-detail">@Model.Point 學分</div>
+                    <hr style="width: 100%; border-top: 1px solid #ccc; margin-top:20px; margin-bottom:2px;">
+                    <hr style="width: 100%; border-top: 1px solid #ccc; margin-top:2px;">
+                    <h3 style="margin-top:20px;">課程簡介</h3>
+                    <hr style="width: 100%; border-top: 1px solid #ccc; margin-top:2px;">
+                    <h4 style="font-weight:500; line-height:35px;">
+                        @Html.Raw(@Model.Detail)
+                    </h4>
+                    <h3 style="margin-top:20px;">授課教授</h3>
+                    <hr style="width: 100%; border-top: 1px solid #ccc; margin-top:2px;">
+
+                    @if (Model.Class_teacher != 0)
+                    {
+                        <div style="overflow:hidden;">
+                            <div class="row navbar-inverse teacher-background col-xs-12">
+                                <div class="wow teacher-slide"></div>
+                                <div class="col-sm-3 col-xs-12">
+                                    <img class="img-circle img-responsive img-center" src="@Href(@Model.ClassTeacher.PictureUrl)" />
+                                </div>
+                                <div class="col-sm-9 col-xs-12">
+                                    <div class="col-xs-12">
+                                        <h3 style="text-align:center;">@Model.ClassTeacher.Name</h3>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <h4 style="text-align:center; white-space: pre-line; line-height:30px;">@Model.ClassTeacher.Title.Replace(',', '\n')</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:15px;">
+                            <div class="col-xs-12">
+                                <h4 style="font-weight:500; line-height:35px;">@Html.Raw(@Model.ClassTeacher.Detail)</h4>
+                            </div>
+                        </div>
+                    }                    
+
+                    @if (Model.Company_teacher != 0)
+                    {
+                        <h3 style="margin-top:20px;">授課業師</h3>
+                        <hr style="width: 100%; border-top: 1px solid #ccc; margin-top:2px;">
+
+                        <div style="overflow:hidden;">
+                            <div class="row navbar-inverse teacher-background col-xs-12">
+                                <div class="wow teacher-slide"></div>
+                                <div class="col-sm-3 col-xs-12">
+                                    <img class="img-circle img-responsive img-center" src="@Href(@Model.CompanyTeacher.PictureUrl)" />
+                                </div>
+                                <div class="col-sm-9 col-xs-12">
+                                    <div class="col-xs-12">
+                                        <h3 style="text-align:center;">@Model.CompanyTeacher.Name</h3>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <h4 style="text-align:center; white-space: pre-line; line-height:30px;">@Model.CompanyTeacher.Title.Replace(',', '\n')</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:15px;">
+                            <div class="col-xs-12">
+                                <h4 style="font-weight:500; line-height:35px;">@Html.Raw(@Model.CompanyTeacher.Detail)</h4>
+                            </div>
+                        </div>
+                    }
+                </div>
+                @*<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="fb-comments" data-href="@Request.Url" data-width="100%" data-numposts="5"></div>
+                </div>*@
+            </div>
+
+        </article>
+
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="col-xs-12">
+                    <hr style="width: 100%; border-top: 1px solid #ccc; margin-top:50px;">
+                    <span class="copyright text-muted">Richard 2017</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

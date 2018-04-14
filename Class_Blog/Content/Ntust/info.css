@@ -1,0 +1,267 @@
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: '微軟正黑體', 'Microsoft JhengHei';
+}
+
+p {
+    font-family: '微軟正黑體', 'Microsoft JhengHei';
+}
+
+body,html{
+    height: 100%;
+}
+
+.post-tag {
+    font-family: '微軟正黑體', 'Microsoft JhengHei';
+    left: 10px;
+    font-size: 20px;
+    text-align: center;
+    padding: 3px 10px;
+    font-weight: 600;
+    border-style: solid;
+    border-color: #525252;
+    border-radius: 15px;
+}
+
+.carousel-inner>.item>a>img,
+.carousel-inner>.item>img {
+    line-height: 1;
+    background-size: cover;
+    width: 100%;
+}
+
+.middle {
+    position: absolute;
+    transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+}
+
+.services-box {
+    padding-top: 30px;
+    text-align: left;
+}
+
+.services-box-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    background: #ff8a38;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #ffb24b 0%, #ff8a38 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffb24b), color-stop(100%, #ff8a38));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #ffb24b 0%, #ff8a38 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #ffb24b 0%, #ff8a38 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #ffb24b 0%, #ff8a38 100%);
+    /* IE10+ */
+    background: linear-gradient(to bottom, #ffb24b 0%, #ff8a38 100%);
+    /* W3C */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ffb24b', endColorstr='#ff8a38', GradientType=0);
+    /* IE6-9 */
+    font-size: 40px;
+    color: #fff;
+    line-height: 80px;
+    text-align: center;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    -o-transition: all .6s;
+    -moz-transition: all .6s;
+    -webkit-transition: all .6s;
+    -ms-transition: all .6s;
+    transition: all .6s;
+}
+
+.videoWrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+}
+.videoWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.videoSize{
+    width:100%;
+    height:auto;
+}
+
+.btn {
+    font-family: '微軟正黑體', 'Microsoft JhengHei';
+    border-color: #222831;
+    border-radius: 10px;
+    transition: all .2s;
+    padding: 10px 15px;
+    font-size: 18px;
+    background-color:#393E46;
+    color:white;
+}
+
+.btn:hover {
+    color: #393E46;
+    background-color: #EEEEEE;
+}
+
+.down {
+    animation-name: downward_2;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes downward_2 {
+    0% {
+        transform: translate(-50%, 0%);
+    }
+
+    50% {
+        transform: translate(-50%, -50%);
+    }
+
+    100% {
+        transform: translate(-50%, 0%);
+    }
+}
+
+@keyframes downward {
+    0% {
+        transform: translate(0, 0%);
+    }
+    50% {
+        transform: translate(0, -50%);
+    }
+    100% {
+        transform: translate(0, 0%);
+    }
+}
+
+@media only screen and (max-width: 992px) {}
+
+@media screen and (min-width: 768px) {
+    .carousel-caption {
+        right: 20%;
+        left: 20%;
+        padding-bottom: 30px;
+        top: 50%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .middle {
+        opacity: 1;
+        transform: translate(0, 0);
+        -ms-transform: translate(0, 0);
+    }
+    .middle hr {
+        margin-top: 4px;
+        margin-bottom: 4px;
+    }
+    .middle p {
+        margin-top: 4px;
+        margin-bottom: 4px;
+    }
+    .downward {
+        display: none;
+    }
+}
+
+.cd-fixed-bg {
+  position: relative;
+  min-height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  z-index: 1;
+}
+.cd-fixed-bg *, .cd-fixed-bg * {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  bottom: auto;
+  right: auto;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  width: 90%;
+  max-width: 1170px;
+  text-align: center;
+  font-size: 30px;
+  font-size: 1.875rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  color: white;
+}
+.cd-fixed-bg.cd-bg-1 {
+    background-position:center center;
+    background-image: url("../../img/ntust/banner-1.jpg");
+  
+}
+.cd-fixed-bg.cd-bg-2 {
+    background-position: center center;
+    background-image: url("../../img/ntust/banner-2.jpg");
+}
+.cd-fixed-bg.cd-bg-3 {
+    background-position: center center;
+    background-image: url("../../img/ntust/banner-3.jpg");
+}
+.cd-fixed-bg.cd-bg-4 {
+  background-image: url("../../img/contact-bg.jpg");
+}
+@media only screen and (min-width: 768px) {
+  .cd-fixed-bg h1, .cd-fixed-bg h2 {
+    font-size: 36px;
+  }
+}
+
+.cd-fixed-bg {
+  background-attachment: fixed;
+}
+.cd-fixed-bg h1, .cd-fixed-bg h2 {
+  font-size: 48px;
+  font-weight: 300;
+}
+
+.cd-scrolling-bg {
+  position: relative;
+  padding: 4em 0;
+  line-height: 1.6;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+.cd-scrolling-bg.cd-color-1 {
+  background-color: #3d3536;
+  color: #a6989a;
+}
+.cd-scrolling-bg.cd-color-2 {
+  background-color: #99a478;
+  color: #3d3536;
+}
+.cd-scrolling-bg.cd-color-3 {
+  background-color: #b4d7a8;
+  color: #3d3536;
+}
+
+.cd-main-content {
+  /* you need to assign a min-height to the main content so that the children can inherit it*/
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.gray-shadow {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3);
+    max-width: 100%;
+}

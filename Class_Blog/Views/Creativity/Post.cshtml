@@ -1,0 +1,81 @@
+﻿@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Styles.Render("~/Content/ntustindex")
+@model Class_Blog.Models.BlogViewModels
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta property="fb:app_id" content="846268078859223" />
+    @{
+        @Html.Partial("_NavPartial");
+    }
+</head>
+<body>
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.9&appId=173001499868804";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+    <!-- Post Content -->
+    <div style="width:100%; height:80px;"></div>
+    <div class="animsition">
+        <article>
+            <div class="container">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="font-family: '微軟正黑體', 'Microsoft JhengHei';">
+                    @{if (Model.NewsList.Count != 0)
+                        {
+                            <span class="post-tag">@Model.NewsList[0].Tag</span>
+                            <h1>@if (@Model.NewsList[0].Title.Split(':')[0].Equals(@Model.NewsList[0].Title))
+                            {
+                                @Model.NewsList[0].Title.Split(':')[0]
+                            }
+                            else
+                            {
+                                @Model.NewsList[0].Title.Split(':')[1]
+                            }</h1>
+                            <span class="meta">@Model.NewsList[0].CreatedDate.ToShortDateString()</span>
+                            <hr style="width: 100%; border-top: 1px solid #ccc; margin-top:20px;">
+                            <div style="white-space: pre-line; line-height: 2em;">
+                                @Html.Raw(Model.NewsList[0].Context)
+                            </div>
+                        }
+                        else if (Model.PostList.Count != 0)
+                        {
+                            <span class="post-tag">@Model.PostList[0].Tag</span>
+                            <h1>@Model.PostList[0].Title</h1>
+                            <span class="meta">Posted by @Model.PostList[0].PostBy on @Model.PostList[0].CreatedDate.ToShortDateString()</span>
+                            <hr style="width: 100%; border-top: 1px solid #ccc; margin-top:20px;">
+                            <div style="white-space: pre-line; line-height: 2em;">@Html.Raw(Model.PostList[0].Context)</div>
+                        }
+                    }
+                    <hr style="width: 100%; border-top: 1px solid #ccc; margin-top:20px; margin-bottom:2px;">
+                    <hr style="width: 100%; border-top: 1px solid #ccc; margin-top:2px;">
+                </div>
+                @*<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="fb-comments" data-href="@Request.Url" data-width="100%" data-numposts="5"></div>
+                </div>*@
+            </div>
+
+        </article>
+
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="col-xs-12">
+                    <hr style="width: 100%; border-top: 1px solid #ccc; margin-top:50px;">
+                    <span class="copyright text-muted">Richard 2017</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
+<script src="https://use.typekit.net/wyd4emv.js"></script>
+<script>try { Typekit.load({ async: false }); } catch (e) { }</script>

@@ -1,0 +1,1002 @@
+﻿
+@{
+    ViewBag.Title = "index";
+}
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Styles.Render("~/Content/homeindex")
+@Scripts.Render("~/bundles/homeindex")
+@model List<Class_Blog.Models.NewsClassModels>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>創融學院</title>
+    <link rel="icon" href="@Url.Content("~/img/creativity_3.png")">
+    <link href="@Url.Content("~/Content/animsition.min.css")" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="@Url.Content("~/Scripts/animsition.min.js")" type="text/javascript"></script>
+    <link rel="stylesheet" href="@Url.Content("~/Content/Ntust/style.css")">
+    <link href="@Url.Content("~/Content/animate.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/wow.min.js")"></script>
+    <script>new WOW().init();</script>
+    <script>console.log("Special thanks : Emily Lin")</script>
+    @*<link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>*@
+
+    <style>
+        a{
+            color:#333;
+        }
+
+        a:focus, a:hover {
+            color: initial;
+        }
+
+        .post-title {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .top-word {
+            position: absolute;
+            top: 0;
+            opacity: 1;
+            color: white;
+            background-color: rgba(0,0,0,0.4);
+            width: 100%;
+            margin: 0px;
+        }
+
+            .top-word:hover {
+                opacity: 1;
+            }
+
+            .top-word > * {
+                margin: 0px;
+            }
+
+        .videoWrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            padding-top: 25px;
+            height: 0;
+        }
+
+        .videoWrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        .post-tag {
+            font-family: '微軟正黑體', 'Microsoft JhengHei';
+            top: 3px;
+            left: 5px;
+            font-size: 17px;
+            text-align: center;
+            padding: 3px 10px;
+            font-weight: 600;
+            border-style: solid;
+            border-color: #525252;
+            border-radius: 15px;
+            -webkit-border-radius: 15px;
+            -moz-border-radius: 15px;
+        }
+
+        .navbar-inverse {
+            background-color: #3E3E3E;
+            border-bottom: 0px;
+        }
+
+        .block {
+            padding: 15px;
+        }
+
+        .innerblock {
+            background-color: rgba(237,237,237,0.6);
+            border-radius: 10px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            text-align: center;
+            padding-top: 20px;
+            box-shadow: 2px 4px 5px #444;
+            -moz-box-shadow: 2px 4px 5px #444;
+            -webkit-box-shadow: 2px 4px 5px #444;
+        }
+
+        .newsblock {
+            background-color: rgba(237,237,237,0.6);
+            border-radius: 10px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            box-shadow: 2px 4px 5px #444;
+            overflow: hidden;
+            min-height: 180px;
+            margin: 20px auto;
+        }
+
+        .nopadding {
+            padding: 0;
+        }
+
+        .tag {
+            color: #EDEDED;
+            background-color: #3E3E3E;
+            padding: 5px;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+        }
+
+            .tag:after {
+                background-color: #3E3E3E;
+            }
+
+        .btn {
+            font-family: '微軟正黑體', 'Microsoft JhengHei';
+            border-color: #3E3E3E;
+            border-radius: 10px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            transition: all .2s;
+            -webkit-transition: all .2s;
+            -o-transition: all .2s;
+            -moz-transition: all .2s;
+            padding: 10px 15px;
+            color: #3E3E3E;
+            background-color: #EDEDED;
+        }
+
+            .btn:hover {
+                color: white;
+                background-color: #405559;
+            }
+
+        .animate_block {
+            content: "";
+            position: absolute;
+            z-index: 10;
+            top: 0;
+            right: 0;
+            left: auto;
+            height: 100%;
+            width: 100%;
+            background-color: #EDEDED;
+            animation: school-animate cubic-bezier(0, 0, 0, 0.95) 1.7s;
+            -webkit-animation: school-animate cubic-bezier(0, 0, 0, 0.95) 1.7s;
+            -o-animation: school-animate cubic-bezier(0, 0, 0, 0.95) 1.7s;
+            -moz-animation: school-animate cubic-bezier(0, 0, 0, 0.95) 1.7s;
+            animation-fill-mode: forwards;
+            -webkit-animation-fill-mode: forwards;
+            -o-animation-fill-mode: forwards;
+            -moz-animation-fill-mode: forwards;
+            transform-origin: left center;
+            -webkit-transform-origin: left center;
+            -o-transform-origin: left center;
+            -moz-transform-origin: left center;
+        }
+
+        .img-hover {
+            transition: all .4s ease-in-out;
+        }
+
+        .is-over h3, .is-over h4, .is-over h5 {
+            color: #0085A1;
+        }
+
+        .is-over .img-hover {
+            transform: scale(1.1);
+        }
+
+        .is-leave .img-hover {
+            transform: scale(1);
+        }
+
+        .img-radius {
+            border-radius: 10px 0px 0px 10px;
+        }
+
+        .animate_block-right {
+            content: "";
+            position: absolute;
+            z-index: 10;
+            top: 0;
+            right: 0;
+            left: auto;
+            height: 100%;
+            width: 100%;
+            background-color: #EDEDED;
+            animation: school-animate cubic-bezier(0, 0, 0, 0.95) 1.7s;
+            -webkit-animation: school-animate cubic-bezier(0, 0, 0, 0.95) 1.7s;
+            -o-animation: school-animate cubic-bezier(0, 0, 0, 0.95) 1.7s;
+            -moz-animation: school-animate cubic-bezier(0, 0, 0, 0.95) 1.7s;
+            animation-fill-mode: forwards;
+            -webkit-animation-fill-mode: forwards;
+            -o-animation-fill-mode: forwards;
+            -moz-animation-fill-mode: forwards;
+            transform-origin: right center;
+            -webkit-transform-origin: right center;
+            -o-transform-origin: right center;
+            -moz-transform-origin: right center;
+        }
+
+        .text-shadow {
+            color: whitesmoke;
+            text-shadow: 4px 4px 10px black;
+        }
+
+        .school-block {
+            background: #4E4E4E;
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            box-shadow: 0 0 10px;
+        }
+
+            .school-block:before {
+                background-color: #3E3E3E;
+            }
+
+        .school-sign {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background-color: #EDEDED;
+        }
+
+        .school-sign-right {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background-color: #EDEDED;
+        }
+
+            .school-sign > img, .school-sign-right > img {
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%);
+                -o-transform: translateX(-50%);
+                -webkit-transform: translateX(-50%);
+                -moz-transform: translateX(-50%);
+                width: 95%;
+                padding: 15%;
+            }
+
+        .school-content {
+            padding-bottom: 20px;
+        }
+
+        @@keyframes school-animate {
+            from {
+            }
+
+            to {
+                transform: scaleX(0) translateZ(0);
+            }
+        }
+
+        @@media screen and (max-width: 767px) {
+            .school-sign {
+                padding-top: 20px;
+                padding-bottom: 20px;
+                border-radius: 5px;
+                background-color: #EDEDED;
+            }
+
+            .school-block {
+                padding-top: 10px;
+                padding-bottom: 10px;
+                background: #4E4E4E;
+                border-radius: 5px;
+                box-shadow: 0 0 10px;
+            }
+
+            .img-radius {
+                border-radius: 10px 10px 0px 0px;
+            }
+            /*.innerblock {
+                transform: translateY( calc( -50% - 20px) );
+            }*/
+        }
+    </style>
+    <script>
+        $(function () {
+            $(".newsblock").hover(function () {
+                $(this).addClass("is-over");
+            }, function () {
+                $(this).removeClass("is-over");
+                $(this).addClass("is-leave").delay(200).removeClass("is-leave");
+            });
+
+            $(".nav-item").click(function () {
+                $("#myNavbar").removeClass("in");
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-toggleable-md navbar-inverse navbar-fixed-top topper nav-modified" style="z-index: 10002;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="" style="background-color:#EDEDED;">
+                    <img src="@Url.Content("~/img/creativity_1.png")" height="30" alt="" style="cursor:pointer; display: inline; margin-top: -5px">
+                    <h4 style="color:#405559; display: inline;">創融學院</h4>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" style="color:#68868C; padding-bottom:5.18px; padding-top:5.18px;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><h4>本頁導覽<span class="caret"></span></h4></a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item"><a href="#news" style="color:#68868C; padding-bottom:5.18px; padding-top:5.18px;"><h5>最新消息</h5></a></li>
+                            <li class="nav-item"><a href="#school" style="color:#68868C; padding-bottom:5.18px; padding-top:5.18px;"><h5>合作學程</h5></a></li>
+                            <li class="nav-item"><a href="#date" style="color:#68868C; padding-bottom:5.18px; padding-top:5.18px;"><h5>重要日程</h5></a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" style="color:#68868C; padding-bottom:5.18px; padding-top:5.18px;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><h4>生活空間創意學程<span class="caret"></span></h4></a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item"><a class="animsition-link" href="/Ntust/Index" style="color:#68868C; padding-bottom:5.18px; padding-top:5.18px;"><h5>最新消息</h5></a></li>
+                            <li class="nav-item"><a class="animsition-link" href="/Ntust/Info" style="color:#68868C; padding-bottom:5.18px; padding-top:5.18px;"><h5>學程介紹</h5></a></li>
+                            <li class="nav-item"><a class="animsition-link" href="/Ntust/About" style="color:#68868C; padding-bottom:5.18px; padding-top:5.18px;"><h5>授課教授</h5></a></li>
+                            <li class="nav-item"><a class="animsition-link" href="/Ntust/Classes" style="color:#68868C; padding-bottom:5.18px; padding-top:5.18px;"><h5>課程列表</h5></a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" style="color:#68868C; padding-bottom:5.18px; padding-top:5.18px;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><h4>大師創業學程<span class="caret"></span></h4></a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item"><a class="animsition-link" href="/Ntnu/Index" style="color:#68868C; padding-bottom:5.18px; padding-top:5.18px;"><h5>最新消息</h5></a></li>
+                            <li class="nav-item"><a class="animsition-link" href="/Ntnu/Info" style="color:#68868C; padding-bottom:5.18px; padding-top:5.18px;"><h5>學程介紹</h5></a></li>
+                            <li class="nav-item"><a class="animsition-link" href="/Ntnu/About" style="color:#68868C; padding-bottom:5.18px; padding-top:5.18px;"><h5>授課教授</h5></a></li>
+                            <li class="nav-item"><a class="animsition-link" href="/Ntnu/Classes" style="color:#68868C; padding-bottom:5.18px; padding-top:5.18px;"><h5>課程列表</h5></a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" style="color:#68868C; padding-bottom:5.18px; padding-top:5.18px;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><h4>創造力學程<span class="caret"></span></h4></a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item"><a class="animsition-link" href="/Nccu/Index" style="color:#68868C; padding-bottom:5.18px; padding-top:5.18px;"><h5>最新消息</h5></a></li>
+                            <li class="nav-item"><a class="animsition-link" href="/Nccu/Info" style="color:#68868C; padding-bottom:5.18px; padding-top:5.18px;"><h5>學程介紹</h5></a></li>
+                            <li class="nav-item"><a class="animsition-link" href="/Nccu/About" style="color:#68868C; padding-bottom:5.18px; padding-top:5.18px;"><h5>授課教授</h5></a></li>
+                            <li class="nav-item"><a class="animsition-link" href="/Nccu/Classes" style="color:#68868C; padding-bottom:5.18px; padding-top:5.18px;"><h5>課程列表</h5></a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" style="color:#68868C; padding-bottom:5.18px; padding-top:5.18px;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><h4>創意設計學程<span class="caret"></span></h4></a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item"><a class="animsition-link" href="/Creativity/Index" style="color:#68868C; padding-bottom:5.18px; padding-top:5.18px;"><h5>最新消息</h5></a></li>
+                            <li class="nav-item"><a class="animsition-link" href="/Creativity/Info" style="color:#68868C; padding-bottom:5.18px; padding-top:5.18px;"><h5>學程介紹</h5></a></li>
+                            <li class="nav-item"><a class="animsition-link" href="/Creativity/About" style="color:#68868C; padding-bottom:5.18px; padding-top:5.18px;"><h5>授課教授</h5></a></li>
+                            <li class="nav-item"><a class="animsition-link" href="/Creativity/Classes" style="color:#68868C; padding-bottom:5.18px; padding-top:5.18px;"><h5>課程列表</h5></a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <div class="animsition">
+        @*<div style="height:90%; width:100%; background-size:cover; background-position:center center; background-image: url(../../../img/index_img.jpg); background-attachment:fixed;">
+        </div>*@
+        <div style="max-height:50%; overflow:hidden; margin-top:50px;" class="visible-lg visible-md" hidden>
+            <img src="@Url.Content("~/img/index_img2.jpg")" class="img-fluid" style="background-size:cover; width:100%; max-height:70%; overflow:hidden;" />
+        </div>
+        <div style="max-height:70%; overflow:hidden; margin-top:50px;" class="visible-sm visible-xs" hidden>
+            <img src="@Url.Content("~/img/index_img2wide.jpg")" class="img-fluid" style="background-size:cover; width:100%; max-height:70%; overflow:hidden;" />
+        </div>
+        <div>
+            <div class="container">
+                <div style="height:30px; width:100%;"></div>
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="intro-heade" style="margin:0; padding-top:15px;">
+                            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                                <!-- Indicators -->
+                                <ol class="carousel-indicators">
+                                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                                    @*<li data-target="#myCarousel" data-slide-to="2"></li>*@
+                                </ol>
+
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <a href="#">
+                                            <img src="@Url.Content("~/img/ntust/banner-1.jpg")" style="background-size: cover;">
+                                            <div class="top-word">
+                                                <h3>生活空間創意學程</h3>
+                                            </div>
+                                        </a>
+
+                                    </div>
+                                    @*<div class="item">
+                                        <a href="#">
+                                            <img src="~/img//home-bg.jpg">
+                                            <div class="top-word">
+                                                <h3>政大課程介紹圖片</h3>
+                                            </div>
+                                        </a>
+                                    </div>*@
+
+                                    <div class="item">
+                                        <a href="#">
+                                            <img src="@Url.Content("~/img/ntnu/Banner5_5.jpg")" style="background-size: cover;">
+                                            <div class="top-word">
+                                                <h3>大師創業學程</h3>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Left and right controls -->
+                                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 hidden-sm hidden-xs" style="padding-top:15px;padding-left:15px; padding-right:15px; padding-bottom:13px;">
+                        <img class="img-responsive" src="@Url.Content("~/img/ntust/banner-3.jpg")" style="background-size: cover; box-shadow: 1px 1px 8px;">
+                    </div>
+                    <div class="col-md-4 hidden-sm hidden-xs" style="padding-left:15px; padding-right:15px;">
+                        <img class="img-responsive" src="@Url.Content("~/img/ntnu/Banner4_4.jpg")" style="background-size: cover; box-shadow: 1px 1px 8px;">
+                    </div>
+                </div>
+
+
+
+                <div id="news" style="height:30px; width:100%;"></div>
+                <h2 class="tag">最新消息</h2>
+                @foreach (var news in Model)
+                {
+                    string SchoolName = "";
+                    string SchoolImage = "";
+                    string SchoolLink = "";
+                    switch (news.School)
+                    {
+                        case 1:
+                            SchoolName = "生活空間創意學程";
+                            SchoolImage = "img/ntust.png";
+                            SchoolLink = String.Format("/{0}/{1}?ID={2}&Type=1", "ntust", "post", news.ID);
+                            break;
+                        case 2:
+                            SchoolName = "創造力學程";
+                            SchoolImage = "img/nccu.png";
+                            SchoolLink = String.Format("/{0}/{1}?ID={2}&Type=1", "nccu", "post", news.ID);
+                            break;
+                        case 3:
+                            SchoolName = "大師創業學程";
+                            SchoolImage = "img/ntnu.png";
+                            SchoolLink = String.Format("/{0}/{1}?ID={2}&Type=1", "ntnu", "post", news.ID);
+                            break;
+                        case 4:
+                            SchoolName = "創意設計學程";
+                            SchoolImage = "img/creativity_3.png";
+                            SchoolLink = String.Format("/{0}/{1}?ID={2}&Type=1", "creativity", "post", news.ID);
+                            break;
+                        default:
+                            SchoolName = "生活空間創意學程";
+                            SchoolImage = "img/ntust.png";
+                            SchoolLink = String.Format("/{0}/{1}?ID={2}&Type=1", "ntust", "post", news.ID);
+                            break;
+                    }
+
+                    <div class="col-lg-6" style="padding-right:10px; padding-left:10px;">
+                        <a href="@SchoolLink">
+                            <div class="wow fadeInDown newsblock">
+                                <div class="col-sm-6 nopadding img-radius" style="overflow:hidden;">
+                                    @if (news.Title.Split(':')[0].Equals(news.Title))
+                                    {
+
+                                        <span class="post-tag" style="position: absolute;top: 5px;left: 5px;background-color: #FBFBFB;z-index:2;">@news.Tag</span>
+                                        <div class="img-hover" style="background:url(@SchoolImage); background-color:#FBFBFB; background-size:50%; background-repeat: no-repeat; background-position:center center; height:180px;">
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <span class="post-tag" style="position: absolute;top: 5px;left: 5px;background-color: #FBFBFB;z-index:2;">@news.Tag</span>
+                                        <div class="img-hover" style="background:url(@news.Title.Split(':')[0]); background-size:cover; background-position:center center; height:180px;">
+                                        </div>
+                                    }
+                                </div>
+                                <div class="col-sm-6">
+                                    <div style="height:15px; width:100%;"></div>
+                                    <span class="post-tag">@SchoolName</span>
+                                    <span class="post-tag">@news.CreatedDate.Month/@news.CreatedDate.Day</span>
+
+                                    <h3 class="post-title">
+                                        @if (news.Title.Split(':')[0].Equals(news.Title))
+                                        {
+                                            @news.Title.Split(':')[0]
+                                        }
+                                        else
+                                        {
+                                            @news.Title.Split(':')[1]
+                                        }
+                                    </h3>
+                                    <h5 class="post-subtitle">
+                                        @if (@news.Lead.Length > 20)
+                                        {
+                                            @news.Lead.Substring(0, 20);
+                                            @Html.Raw(" (繼續閱讀)");
+                                        }
+                                        else
+                                        {
+                                            @news.Lead
+                                        }
+                                    </h5>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div id="school" style="height:30px; width:100%;"></div>
+        <div class="container">
+            <h2 class="tag">合作學程</h2>
+            <div class="col-xs-12" style="width:100%; height:30px;"></div>
+
+            <div class="col-xs-12 wow school-block">
+                <div class="wow animate_block">
+                </div>
+                <div>
+                    <div class="col-sm-2 col-xs-10 col-xs-offset-1 col-sm-offset-0 school-sign  wow fadeInRight" style="animation-delay: 0.8s;">
+                        <img src="~/img/ntust.png" alt="Avatar" class="horizontal-middle">
+                    </div>
+                    <div class="col-sm-10 col-xs-12 school-content">
+                        <div class="col-sm-12 col-xs-12">
+                            <h2 class="text-shadow wow fadeInDown" style="text-align:center;">生活空間創意學程</h2>
+                        </div>
+                        <div class="col-sm-2 col-xs-6 col-sm-offset-2 col-xs-offset-0  wow fadeInDown" style="animation-delay: 0.4s;">
+                            <a class="btn animsition-link horizontal-middle" style="margin-top:25px; display: inline-block; text-align: center;" href="/Ntust/index">最新消息</a>
+                        </div>
+                        <div class="col-sm-2 col-xs-6  wow fadeInUp" style="animation-delay: 0.5s;">
+                            <a class="btn animsition-link horizontal-middle" style="margin-top:25px; display: inline-block; text-align: center;" href="/Ntust/info">學程介紹</a>
+                        </div>
+                        <div class="col-sm-2 col-xs-6  wow fadeInUp" style="animation-delay: 0.6s;">
+                            <a class="btn animsition-link horizontal-middle" style="margin-top:25px; display: inline-block; text-align: center;" href="/Ntust/about">授課教授</a>
+                        </div>
+                        <div class="col-sm-2 col-xs-6  wow fadeInUp" style="animation-delay: 0.7s;">
+                            <a class="btn animsition-link horizontal-middle" style="margin-top:25px; display: inline-block; text-align: center;" href="/Ntust/classes">課程列表</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12" style="width:100%; height:40px;"></div>
+
+            <div class="col-xs-12 wow school-block">
+                <div class="wow animate_block-right">
+                </div>
+                <div>
+                    <div class="col-sm-2 col-xs-10 col-xs-offset-1 col-sm-offset-0 school-sign visible-xs  wow fadeInRight" style="animation-delay: 0.8s;">
+                        <img src="~/img/ntnu.png" alt="Avatar" class="horizontal-middle">
+                    </div>
+                    <div class="col-sm-10 col-xs-12 school-content">
+                        <div class="col-sm-12 col-xs-12">
+                            <h2 class="text-shadow wow fadeInDown" style="text-align:center;">大師創業學程</h2>
+                        </div>
+                        <div class="col-sm-2 col-xs-6 col-sm-offset-2 col-xs-offset-0  wow fadeInDown" style="animation-delay: 0.4s;">
+                            <a class="btn animsition-link horizontal-middle" style="margin-top:25px; display: inline-block; text-align: center;" href="/Ntnu/index">最新消息</a>
+                        </div>
+                        <div class="col-sm-2 col-xs-6  wow fadeInDown" style="animation-delay: 0.5s;">
+                            <a class="btn animsition-link horizontal-middle" style="margin-top:25px; display: inline-block; text-align: center;" href="/Ntnu/info">學程介紹</a>
+                        </div>
+                        <div class="col-sm-2 col-xs-6  wow fadeInDown" style="animation-delay: 0.6s;">
+                            <a class="btn animsition-link horizontal-middle" style="margin-top:25px; display: inline-block; text-align: center;" href="/Ntnu/about">授課教授</a>
+                        </div>
+                        <div class="col-sm-2 col-xs-6  wow fadeInDown" style="animation-delay: 0.7s;">
+                            <a class="btn animsition-link horizontal-middle" style="margin-top:25px; display: inline-block; text-align: center;" href="/Ntnu/classes">課程列表</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col-xs-10 col-xs-offset-1 col-sm-offset-0 school-sign-right hidden-xs  wow fadeInLeft" style="animation-delay: 0.8s;">
+                        <img src="~/img/ntnu.png" alt="Avatar" class="horizontal-middle">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12" style="width:100%; height:40px;"></div>
+
+            <div class="col-xs-12 wow school-block">
+                <div class="wow animate_block">
+                </div>
+                <div>
+                    <div class="col-sm-2 col-xs-10 col-xs-offset-1 col-sm-offset-0 school-sign  wow fadeInRight" style="animation-delay: 0.8s;">
+                        <img src="~/img/nccu.png" alt="Avatar" class="horizontal-middle">
+                    </div>
+                    <div class="col-sm-10 col-xs-12 school-content">
+                        <div class="col-sm-12 col-xs-12">
+                            <h2 class="text-shadow wow fadeInDown" style="text-align:center;">創造力學程</h2>
+                        </div>
+                        <div class="col-sm-2 col-xs-6 col-sm-offset-2 col-xs-offset-0  wow fadeInDown" style="animation-delay: 0.4s;">
+                            <a class="btn animsition-link horizontal-middle" style="margin-top:25px; display: inline-block; text-align: center;" href="/Nccu/index">最新消息</a>
+                        </div>
+                        <div class="col-sm-2 col-xs-6  wow fadeInUp" style="animation-delay: 0.5s;">
+                            <a class="btn animsition-link horizontal-middle" style="margin-top:25px; display: inline-block; text-align: center;" href="/Nccu/info">學程介紹</a>
+                        </div>
+                        <div class="col-sm-2 col-xs-6  wow fadeInUp" style="animation-delay: 0.6s;">
+                            <a class="btn animsition-link horizontal-middle" style="margin-top:25px; display: inline-block; text-align: center;" href="/Nccu/about">授課教授</a>
+                        </div>
+                        <div class="col-sm-2 col-xs-6  wow fadeInUp" style="animation-delay: 0.7s;">
+                            <a class="btn animsition-link horizontal-middle" style="margin-top:25px; display: inline-block; text-align: center;" href="/Nccu/classes">課程列表</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12" style="width:100%; height:40px;"></div>
+
+            <div class="col-xs-12 wow school-block">
+                <div class="wow animate_block-right">
+                </div>
+                <div>
+                    <div class="col-sm-2 col-xs-10 col-xs-offset-1 col-sm-offset-0 school-sign visible-xs  wow fadeInRight" style="animation-delay: 0.8s;">
+                        <img src="~/img/allschool-1.png" alt="Avatar" class="horizontal-middle">
+                    </div>
+                    <div class="col-sm-10 col-xs-12 school-content">
+                        <div class="col-sm-12 col-xs-12">
+                            <h2 class="text-shadow wow fadeInDown" style="text-align:center;">創意設計學程</h2>
+                        </div>
+                        <div class="col-sm-2 col-xs-6 col-sm-offset-2 col-xs-offset-0  wow fadeInDown" style="animation-delay: 0.4s;">
+                            <a class="btn animsition-link horizontal-middle" style="margin-top:25px; display: inline-block; text-align: center;" href="/Creativity/index">最新消息</a>
+                        </div>
+                        <div class="col-sm-2 col-xs-6  wow fadeInDown" style="animation-delay: 0.5s;">
+                            <a class="btn animsition-link horizontal-middle" style="margin-top:25px; display: inline-block; text-align: center;" href="/Creativity/info">學程介紹</a>
+                        </div>
+                        <div class="col-sm-2 col-xs-6  wow fadeInDown" style="animation-delay: 0.6s;">
+                            <a class="btn animsition-link horizontal-middle" style="margin-top:25px; display: inline-block; text-align: center;" href="/Creativity/about">授課教授</a>
+                        </div>
+                        <div class="col-sm-2 col-xs-6  wow fadeInDown" style="animation-delay: 0.7s;">
+                            <a class="btn animsition-link horizontal-middle" style="margin-top:25px; display: inline-block; text-align: center;" href="/Creativity/classes">課程列表</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col-xs-10 col-xs-offset-1 col-sm-offset-0 school-sign-right hidden-xs  wow fadeInLeft" style="animation-delay: 0.8s;">
+                        <img src="~/img/allschool-1.png" alt="Avatar" class="horizontal-middle">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="date" style="height:30px; width:100%;"></div>
+        <div class="container">
+            <h2 class="tag">重要日程</h2>
+            <div>
+                <section id="cd-timeline" class="cd-container" style="margin-top:0;">
+                    <div class="cd-timeline-block">
+                        <div class="wow cd-timeline-img cd-picture zoomIn">
+                            <i class="fa fa-calendar-check-o fa-lg"></i>
+                        </div>
+                        <!-- cd-timeline-img -->
+                        <div class="wow cd-timeline-content fadeInDown">
+                            <h2>FB粉絲專頁公告錄取名單</h2>
+                            @*<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
+                                <a href="/Ntust/index" class="cd-read-more">Read more</a>*@
+                            <span class="cd-date">2017/5/22</span>
+                        </div>
+                        <!-- cd-timeline-content -->
+                    </div>
+                    <!-- cd-timeline-block -->
+                    <div class="cd-timeline-block">
+                        <div class="wow cd-timeline-img cd-movie zoomIn">
+                            <i class="fa fa-book fa-lg"></i>
+                        </div>
+                        <!-- cd-timeline-img -->
+                        <div class="wow cd-timeline-content fadeInDown">
+                            <h2>「創意設計導論」課程</h2>
+                            @*<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde?</p>
+                                <a href="/Ntust/index" class="cd-read-more">Read more</a>*@
+                            <span class="cd-date">2017/6/26 ~ 2017/7/05</span>
+                        </div>
+                        <!-- cd-timeline-content -->
+                    </div>
+                    <!-- cd-timeline-block -->
+                    <div class="cd-timeline-block">
+                        <div class="wow cd-timeline-img cd-picture zoomIn">
+                            <i class="fa fa-paint-brush fa-lg"></i>
+                        </div>
+                        <!-- cd-timeline-img -->
+                        <div class="wow cd-timeline-content fadeInDown">
+                            <h2>第一階段成果展覽暨發表會</h2>
+                            @*<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, obcaecati, quisquam id molestias eaque asperiores voluptatibus cupiditate error assumenda delectus odit similique earum voluptatem doloremque dolorem ipsam quae rerum quis. Odit, itaque, deserunt corporis vero ipsum nisi eius odio natus ullam provident pariatur temporibus quia eos repellat consequuntur perferendis enim amet quae quasi repudiandae sed quod veniam dolore possimus rem voluptatum eveniet eligendi quis fugiat aliquam sunt similique aut adipisci.</p>
+                                <a href="/Ntust/index" class="cd-read-more">Read more</a>*@
+                            <span class="cd-date">2017/11月底</span>
+                        </div>
+                        <!-- cd-timeline-content -->
+                    </div>
+                    <!-- cd-timeline-block -->
+                    <div class="cd-timeline-block">
+                        <div class="wow cd-timeline-img cd-location zoomIn">
+                            <i class="fa fa-book fa-lg"></i>
+                        </div>
+                        <!-- cd-timeline-img -->
+                        <div class="wow cd-timeline-content fadeInDown">
+                            <h2>「創意設計實務」課程</h2>
+                            @*<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
+                                <a href="/Ntust/index" class="cd-read-more">Read more</a>*@
+                            <span class="cd-date">2018/6/25 ~ 2018/7/10</span>
+                        </div>
+                        <!-- cd-timeline-content -->
+                    </div>
+                </section>
+                <!-- cd-timeline -->
+            </div>
+        </div>
+
+    </div>
+    @*<div class="row">
+            <div class="col-xs-1 visible-xs" style="height:100%;"></div>
+            <div class="col-sm-6 col-xs-10 block">
+                <div class="innerblock">
+                    <h2>台科大課程</h2>
+                    <div style="padding-top:25px;"></div>
+                    <div class="hidden-xs" style="padding-bottom:35px;">
+                        <img src="~/img/ntust.png" alt="Avatar" style="width:20%;">
+                    </div>
+                    <a class="btn animsition-link" style="margin-bottom:25px; display: inline-block; text-align: center;" href="/Ntust/info">課程介紹</a>
+                    <a class="btn animsition-link" style="margin-bottom:25px; display: inline-block; text-align: center;" href="/Ntust/index">最新消息</a>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-xs-10 block">
+                <div class="innerblock">
+                    <h2>政大課程</h2>
+                    <div style="padding-top:25px;"></div>
+                    <div class="hidden-xs" style="padding-bottom:35px;">
+                        <img src="~/img/nccu.png" alt="Avatar" style="width:20%;">
+                    </div>
+                    <a class="btn animsition-link" style="margin-bottom:25px; display: inline-block; text-align: center;" href="/Ntust/info">課程介紹</a>
+                    <a class="btn animsition-link" style="margin-bottom:25px; display: inline-block; text-align: center;" href="/Ntust/index">最新消息</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-xs-10 block">
+                <div class="innerblock">
+                    <h2>師大課程</h2>
+                    <div style="padding-top:25px;"></div>
+                    <div class="hidden-xs" style="padding-bottom:35px;">
+                        <img src="~/img/ntnu.png" alt="Avatar" style="width:20%;">
+                    </div>
+                    <a class="btn animsition-link" style="margin-bottom:25px; display: inline-block; text-align: center;" href="/Ntust/info">課程介紹</a>
+                    <a class="btn animsition-link" style="margin-bottom:25px; display: inline-block; text-align: center;" href="/Ntust/index">最新消息</a>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-xs-10 block">
+                <div class="innerblock">
+                    <h2>三校課程</h2>
+                    <div style="padding-top:25px;"></div>
+                    <div class="hidden-xs" style="padding-bottom:35px;">
+                        <img src="~/img/ntnu.png" alt="Avatar" style="width:20%;">
+                    </div>
+                    <a class="btn animsition-link" style="margin-bottom:25px; display: inline-block; text-align: center;" href="/Ntust/info">課程介紹</a>
+                    <a class="btn animsition-link" style="margin-bottom:25px; display: inline-block; text-align: center;" href="/Ntust/index">最新消息</a>
+                </div>
+            </div>
+        </div>*@
+    </div>
+
+    <div class="container">
+        <footer>
+            <div class="container">
+                <div class="col-xs-12">
+                    <hr style="width: 100%; border-top: 1px solid #ccc; margin-top:50px;">
+                    <span class="copyright text-muted">Richard 2017</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+    @*<a href="/ntust/index" class="animsition-link">
+            <div class="col-md-4" style="height: calc(100% + 50px);">
+                <div class="container">
+                    <img src="~/img/ntust1.jpg" alt="Avatar" class="0 image">
+                    <img src="~/img/ntust2.jpg" alt="Avatar" class="1 image">
+                    <img src="~/img/ntust3.jpg" alt="Avatar" class="2 image">
+                    <div class="overlay">
+                    </div>
+                    <div class="middle-top topper">
+                        <div class="school">HERE IS FOR NTUST</div>
+                    </div>
+                    <div class="middle topper">
+                        <div>
+                            <span class="fa fa-chevron-left fa-2x" style="color:white" aria-hidden="true"></span>
+                            <span class="enter" style="color:white">Click Enter</span>
+                            <span class="fa fa-chevron-right fa-2x" style="color:white" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                    <div class="middle-down topper">
+                        <img src="~/img/ntust.png" alt="Avatar" style="width:100%;">
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="/ntust/index" class="animsition-link">
+            <div class="col-md-4" style="height: calc(100% + 50px);">
+                <div class="container">
+                    <img src="~/img/workshop.jpg" alt="Avatar" class="0 image">
+                    <img src="~/img/home-bg.jpg" alt="Avatar" class="1 image">
+                    <img src="~/img/contact-bg.jpg" alt="Avatar" class="2 image">
+                    <div class="overlay">
+                    </div>
+                    <div class="middle-top topper">
+                        <div class="school">HERE IS FOR NCCU</div>
+                    </div>
+                    <div class="middle topper">
+                        <div>
+                            <span class="fa fa-chevron-left fa-2x" style="color:white" aria-hidden="true"></span>
+                            <span class="enter" style="color:white">Click Enter</span>
+                            <span class="fa fa-chevron-right fa-2x" style="color:white" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                    <div class="middle-down topper">
+                        <img src="~/img/nccu.png" alt="Avatar" style="width:100%;">
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="/ntust/index" class="animsition-link">
+            <div class="col-md-4" style="height: calc(100% + 50px);">
+                <div class="container">
+                    <img src="~/img/workshop.jpg" alt="Avatar" class="0 image">
+                    <img src="~/img/home-bg.jpg" alt="Avatar" class="1 image">
+                    <img src="~/img/contact-bg.jpg" alt="Avatar" class="2 image">
+                    <div class="overlay">
+                    </div>
+                    <div class="middle-top topper">
+                        <div class="school">HERE IS FOR NTNU</div>
+                    </div>
+                    <div class="middle topper">
+                        <div>
+                            <span class="fa fa-chevron-left fa-2x" style="color:white" aria-hidden="true"></span>
+                            <span class="enter" style="color:white">Click Enter</span>
+                            <span class="fa fa-chevron-right fa-2x" style="color:white" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                    <div class="middle-down topper">
+                        <img src="~/img/ntnu.png" alt="Avatar" style="width:100%;">
+                    </div>
+                </div>
+            </div>
+        </a>*@@*<a href="/ntust/index" class="animsition-link">
+            <div class="col-md-4" style="height: calc(100% + 50px);">
+                <div class="container">
+                    <img src="~/img/ntust1.jpg" alt="Avatar" class="0 image">
+                    <img src="~/img/ntust2.jpg" alt="Avatar" class="1 image">
+                    <img src="~/img/ntust3.jpg" alt="Avatar" class="2 image">
+                    <div class="overlay">
+                    </div>
+                    <div class="middle-top topper">
+                        <div class="school"></div>
+                    </div>
+                    <div class="middle topper">
+                        <div>
+                            <span class="fa fa-chevron-left fa-2x" style="color:white" aria-hidden="true"></span>
+                            <span class="enter" style="color:white"></span>
+                            <span class="fa fa-chevron-right fa-2x" style="color:white" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                    <div class="middle-down topper">
+                        <img src="~/img/ntust.png" alt="Avatar" style="width:100%;">
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="/ntust/index" class="animsition-link">
+            <div class="col-md-4" style="height: calc(100% + 50px);">
+                <div class="container">
+                    <img src="~/img/workshop.jpg" alt="Avatar" class="0 image">
+                    <img src="~/img/home-bg.jpg" alt="Avatar" class="1 image">
+                    <img src="~/img/contact-bg.jpg" alt="Avatar" class="2 image">
+                    <div class="overlay">
+                    </div>
+                    <div class="middle-top topper">
+                        <div class="school"></div>
+                    </div>
+                    <div class="middle topper">
+                        <div>
+                            <span class="fa fa-chevron-left fa-2x" style="color:white" aria-hidden="true"></span>
+                            <span class="enter" style="color:white"></span>
+                            <span class="fa fa-chevron-right fa-2x" style="color:white" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                    <div class="middle-down topper">
+                        <img src="~/img/nccu.png" alt="Avatar" style="width:100%;">
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a href="/ntust/index" class="animsition-link">
+            <div class="col-md-4" style="height: calc(100% + 50px);">
+                <div class="container">
+                    <img src="~/img/workshop.jpg" alt="Avatar" class="0 image">
+                    <img src="~/img/home-bg.jpg" alt="Avatar" class="1 image">
+                    <img src="~/img/contact-bg.jpg" alt="Avatar" class="2 image">
+                    <div class="overlay">
+                    </div>
+                    <div class="middle-top topper">
+                        <div class="school"></div>
+                    </div>
+                    <div class="middle topper">
+                        <div>
+                            <span class="fa fa-chevron-left fa-2x" style="color:white" aria-hidden="true"></span>
+                            <span class="enter" style="color:white"></span>
+                            <span class="fa fa-chevron-right fa-2x" style="color:white" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                    <div class="middle-down topper">
+                        <img src="~/img/ntnu.png" alt="Avatar" style="width:100%;">
+                    </div>
+                </div>
+            </div>
+        </a>
+        </div>*@
+
+
+        <script type="text/javascript">
+            function openNav() {
+                document.getElementById("myNav").style.width = "100%";
+            }
+
+            function closeNav() {
+                document.getElementById("myNav").style.width = "0%";
+            }
+        </script>
+    </body>
+</html>
+<script>
+            $(document).ready(function () {
+                var items = $('#myCarousel .item'), //grab all slides
+                    heights = [], //create empty array to store height values
+                    tallest; //create variable to make note of the tallest slide
+                if (items.length) {
+                    function normalizeHeights() {
+                        items.each(function () { //add heights to array
+                            heights.push($(this).height());
+                        });
+                        tallest = Math.max.apply(null, heights); //cache largest value
+                        items.each(function () {
+                            $(this).css('min-height', tallest + 'px');
+                        });
+                    };
+                    normalizeHeights();
+
+                    $(window).on('resize orientationchange', function () {
+                        tallest = 0, heights.length = 0; //reset vars
+                        items.each(function () {
+                            $(this).css('min-height', '0'); //reset min-height
+                        });
+                        normalizeHeights(); //run it again
+                    });
+                }
+            });
+</script>

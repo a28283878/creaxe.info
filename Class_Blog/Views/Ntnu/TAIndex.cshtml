@@ -1,0 +1,172 @@
+﻿@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Styles.Render("~/Content/ntustindex")
+@model Class_Blog.Models.TABlogViewModels
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="~/Scripts/Home/clean-blog.min.js"></script>
+    <script src="~/Scripts/Ntnu/TAindex.js"></script>
+    @{
+        @Html.Partial("_NavPartial");
+    }
+</head>
+<body>
+    <div class="row" style="width:100%; height:50px;"></div>
+    <div class="animsition">
+        <div id="here"></div>
+        <hr style="width: 100%; border-top: 1px solid #ccc; margin-bottom:1px;">
+        @*<div class="row" style="width:100%; margin:0">
+            @{
+                if (Model.Emergency != null)
+                {
+                    string Edit = "/" + @ViewBag.SchoolName + "/Edit?ID=";
+                    Edit = Edit + @Model.Emergency.ID + "&Type=0";
+                    string Delete = "/" + @ViewBag.SchoolName + "/Delete?ID=";
+                    Delete = Delete + @Model.Emergency.ID + "&Type=0";
+                    <p><h2 style="text-align:center; margin:0px; line-height:2px; color:#FF4545">@Model.Emergency.Title</h2></p>
+                    <p><h3 style="text-align:center; margin:0px; line-height:2px; color:#FF4545">@Model.Emergency.Lead</h3></p>
+                    <a href=@Edit class="btn btn-info" role="button">Edit</a>
+                    <button value=@Delete class="btn btn-danger" role="button">Delete</button>
+                }
+                else
+                {
+                    <a href="/@ViewBag.SchoolName/Create?Type=0" class="btn btn-success" role="button">Create</a>
+                }
+            }
+
+        </div>*@
+        <hr style="width: 100%; border-top: 1px solid #ccc; margin-top:1px;">
+
+        <div style="height:50px;"></div>
+        <div class="row" style="margin:0;">
+            <div class="container col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1" style="padding:0;">
+                <ul class="nav nav-tabs" style="border-color:#aaa;">
+                    <li id="recent-tab" role="presentation" class="active"><a style='font-family: "微軟正黑體", "Microsoft JhengHei"; font-weight:500;'>最新消息</a></li>
+                    @*<li id="post-tab" role="presentation"><a style='font-family: "微軟正黑體", "Microsoft JhengHei";  font-weight:500;'>課程發文</a></li>*@
+                    <li id="picture-tab" role="presentation"><a style='font-family: "微軟正黑體", "Microsoft JhengHei";  font-weight:500;'>圖片集</a></li>
+
+                </ul>
+            </div>
+            <!-- Main Content -->
+            <div id="recent" class="board container col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="post-preview col-lg-10 col-xs-offset-1">
+                                <h2 class="post-title">
+                                    最新消息
+                                </h2>
+                            </div>
+                        </div>
+                        <a href="/@ViewBag.SchoolName/Create?Type=1" class="btn btn-success" role="button">Create</a>
+                        <div class="row">
+                            <hr class="col-lg-12" style="padding-right:0; padding-left:0;border-top: 1px solid #ccc;">
+                        </div>
+                        <div id="NewsPartial">
+                            @{
+                                Html.RenderAction("TANewsPartial", new { Pages = 0 });
+                            }
+                        </div>
+                        <!-- Pager -->
+                        <ul class="pager">
+                            @{
+                                int Newspages = (Model.NewsNum - 1) / 5;
+                                for (int i = 0; i <= Newspages; i++)
+                                {
+                                    <li>
+                                        <a class="Newspage">@(i + 1)</a>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <!-- Main Content -->
+            @*<div id="post" class="container col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 board" style="display:none;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="post-preview col-lg-10 col-xs-offset-1">
+                                <h2 class="post-title">
+                                    課程發文
+                                </h2>
+                            </div>
+                        </div>
+                        <a href="/@ViewBag.SchoolName/Create?Type=2" class="btn btn-success" role="button">Create</a>
+                        <div class="row">
+                            <hr class="col-lg-12" style="padding-right:0; padding-left:0;border-top: 1px solid #ccc;">
+                        </div>
+                        <div id="PostPartial">
+                            @{
+                                Html.RenderAction("TAPostPartial", new { Pages = 0 });
+                            }
+                        </div>
+                        <ul class="pager">
+                            @{
+                                int Postpages = (Model.PostNum - 1) / 5;
+                                for (int i = 0; i <= Postpages; i++)
+                                {
+                                    <li>
+                                        <a class="Postpage">@(i + 1)</a>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                        <br>
+                    </div>
+                </div>
+            </div>*@
+            <!-- Main Content -->
+            <div id="picture" class="board container col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1" style="display:none;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="post-preview col-lg-10 col-xs-offset-1">
+                                <h2 class="post-title">
+                                    圖片集
+                                </h2>
+                            </div>
+                        </div>
+                        <button id="upload_img" class="btn btn-success" role="button">Upload</button>
+                        <div class="row">
+                            <hr class="col-lg-12" style="padding-right:0; padding-left:0;border-top: 1px solid #ccc;">
+                        </div>
+                        <div id="NewsPartial">
+                            @{
+                                Html.RenderAction("TAPicturesPartial", new { Pages = 0 });
+                            }
+                        </div>
+                        <!-- Pager -->
+                        <ul class="pager">
+                            @{
+                                int Picturespages = (Model.PicturesNum - 1) / 5;
+                                for (int i = 0; i <= Picturespages; i++)
+                                {
+                                    <li>
+                                        <a class="Picturespage">@(i + 1)</a>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="container">
+                <div class="col-xs-12">
+                    <hr style="width: 100%; border-top: 1px solid #ccc; margin-top:50px;">
+                    <span class="copyright text-muted">Richard 2017</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
+<script src="https://use.typekit.net/wyd4emv.js"></script>
+<script>try { Typekit.load({ async: false }); } catch (e) { }</script>

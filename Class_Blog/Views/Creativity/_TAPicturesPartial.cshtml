@@ -1,0 +1,21 @@
+﻿@model  IEnumerable <Class_Blog.Models.PictureModels>
+
+@{
+    foreach (var picture in Model)
+    {
+        <div class="row">
+            <div class="post-preview  col-sm-10 col-sm-offset-1">
+                <span class="post-tag">圖片</span>
+                <h4 class="post-title">
+                    @picture.FullName
+                </h4>
+                <img style="width:50%;"class="embed-responsive-item" src="@Url.Content(@picture.FullName)"/>
+            </div>
+        </div>
+        <br />
+        <button value=@string.Format("/{1}/DeletePic?ID={0}",@picture.ID,ViewBag.SchoolName) class="btn btn-danger" role="button">Delete</button>
+        <div class="row">
+            <hr class="col-lg-12" style="padding-right:0; padding-left:0;border-top: 1px solid #ccc;">
+        </div>
+    }
+}

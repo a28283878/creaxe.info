@@ -1,0 +1,35 @@
+﻿.post-tag-school {
+    border-color: #2866AB;
+    color: #2866AB;
+}
+
+.post-tag-detail {
+    display: inline-block;
+    border-color: #073059;
+    color: #073059;
+    margin-top: 2px;
+}
+
+.tag {
+    color: #EDEDED;
+    background-color: #3E3E3E;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.newsblock {
+    background-color: rgba(237,237,237,0.6);
+    border-radius: 10px;
+    box-shadow: 2px 4px 5px #444;
+    padding: 15px 15px 10px 15px;
+    min-height: 180px;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.title-height {
+    display: table;
+    height: 55px;
+}

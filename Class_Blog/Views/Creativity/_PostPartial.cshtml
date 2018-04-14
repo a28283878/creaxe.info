@@ -1,0 +1,41 @@
+﻿@model  IEnumerable<Class_Blog.Models.PostModels>
+
+@{
+    foreach (var post in Model)
+    {
+        <div class="row">
+            <div class="post-preview  col-sm-10 col-sm-offset-1">
+                <span class="post-tag">@post.Tag</span>
+                @{if (!string.IsNullOrEmpty(post.Context))
+                    {
+                        <a target="_blank" href=@string.Format("/{2}/Post?ID={0}&Type={1}", post.ID, 2, ViewBag.SchoolName)>
+                            <h2 class="post-title">
+                                @post.Title
+                            </h2>
+                            <h3 class="post-subtitle">
+                                @Html.Raw(@post.Lead)
+                            </h3>
+                        <br />
+                        <h4>(繼續閱讀)</h4>
+                        </a>
+                    }
+                    else
+                    {
+                        <a>
+                            <h2 class="post-title">
+                                @post.Title
+                            </h2>
+                            <h3 class="post-subtitle">
+                                @Html.Raw(@post.Lead)
+                            </h3>
+                        </a>
+                    }
+                }
+                <p class="post-meta">@post.CreatedDate.ToShortDateString()</p>
+            </div>
+        </div>
+            <div class="row">
+                <hr class="col-lg-12" style="padding-right:0; padding-left:0;border-top: 1px solid #ccc;">
+            </div>
+                    }
+}

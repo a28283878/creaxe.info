@@ -1,0 +1,138 @@
+﻿@model IEnumerable <Class_Blog.Models.NewsClassModels>
+
+@{
+    foreach (var news in Model)
+    {
+        string SchoolName = "";
+        string SchoolImage = "";
+        string SchoolLink = "";
+        switch (news.School)
+        {
+            case 1:
+                SchoolName = "生活空間創意學程";
+                SchoolImage = "img/ntust.png";
+                SchoolLink = String.Format("/{0}/{1}?ID={2}&Type=1", "ntust", "post", news.ID);
+                break;
+            case 2:
+                SchoolName = "創造力學程";
+                SchoolImage = "img/nccu.png";
+                SchoolLink = String.Format("/{0}/{1}?ID={2}&Type=1", "nccu", "post", news.ID);
+                break;
+            case 3:
+                SchoolName = "大師創業學程";
+                SchoolImage = "img/ntnu.png";
+                SchoolLink = String.Format("/{0}/{1}?ID={2}&Type=1", "ntnu", "post", news.ID);
+                break;
+            case 4:
+                SchoolName = "創意設計學程";
+                SchoolImage = "img/creativity_3.png";
+                SchoolLink = String.Format("/{0}/{1}?ID={2}&Type=1", "creativity", "post", news.ID);
+                break;
+            default:
+                SchoolName = "生活空間創意學程";
+                SchoolImage = "img/ntust.png";
+                SchoolLink = String.Format("/{0}/{1}?ID={2}&Type=1", "ntust", "post", news.ID);
+                break;
+        }
+
+        <div class="col-lg-6" style="padding-right:10px; padding-left:10px;">
+            <a href="@SchoolLink">
+                <div class="wow fadeInDown newsblock">
+                    <div class="col-sm-6 nopadding img-radius" style="overflow:hidden;">
+                        @if (news.Title.Split(':')[0].Equals(news.Title))
+                        {
+                            <span class="post-tag" style="position: absolute;top: 5px;left: 5px;background-color: #FBFBFB;z-index:2;">@news.Tag</span>
+                            <div class="img-hover" style="background:url(@SchoolImage); background-color:#FBFBFB; background-size:45%; background-repeat: no-repeat; background-position:center center; height:180px;">
+                            </div>
+                        }
+                        else
+                        {
+                            <span class="post-tag" style="position: absolute;top: 5px;left: 5px;background-color: #FBFBFB;z-index:2;">@news.Tag</span>
+                            <div class="img-hover" style="background:url(@news.Title.Split(':')[0]); background-size:cover; background-position:center center; height:180px;">
+                            </div>
+                        }
+                    </div>
+                    <div class="col-sm-6">
+                        <div style="height:15px; width:100%;"></div>
+                        <span class="post-tag">@SchoolName</span>
+                        <span class="post-tag">@news.CreatedDate.Month/@news.CreatedDate.Day</span>
+
+                        <h3 class="post-title">
+                            @if (news.Title.Split(':')[0].Equals(news.Title))
+                            {
+                                @news.Title.Split(':')[0]
+                            }
+                            else
+                            {
+                                @news.Title.Split(':')[1]
+                            }
+                        </h3>
+                        <h5 class="post-subtitle">
+                            @if (@news.Lead.Length > 20)
+                            {
+                                @news.Lead.Substring(0, 20);
+                                @Html.Raw(" (繼續閱讀)");
+                            }
+                            else
+                            {
+                                @news.Lead
+                            }
+                        </h5>
+
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+    @*foreach (var news in Model)
+    {
+        <div class="row">
+            <div class="post-preview  col-sm-10 col-sm-offset-1">
+                <span class="post-tag">@news.Tag</span>
+                @{if (!string.IsNullOrEmpty(news.Context))
+                    {
+                        <a target="_blank" href=@string.Format("/{2}/Post?ID={0}&Type={1}", news.ID, 1,ViewBag.SchoolName)>
+                        <h3 class="post-title">
+                            @if (news.Title.Split(':')[0].Equals(news.Title))
+                            {
+                                @news.Title.Split(':')[0]
+                            }
+                            else
+                            {
+                                @news.Title.Split(':')[1]
+                            }
+                        </h3>
+                        <h3 class="post-subtitle">
+                            @Html.Raw(@news.Lead)
+                        </h3>
+                        <br />
+                        <h4>(繼續閱讀)</h4>
+                        </a>
+                    }
+                    else
+                    {
+                        <a>
+                            <h3 class="post-title">
+                                @if (news.Title.Split(':')[0].Equals(news.Title))
+                                {
+                                    @news.Title.Split(':')[0]
+                                }
+                                else
+                                {
+                                    @news.Title.Split(':')[1]
+                                }
+                            </h3>
+                            <h3 class="post-subtitle">
+                                @Html.Raw(@news.Lead)
+                            </h3>
+                        </a>
+                    }
+                }
+                <p class="post-meta">@news.CreatedDate.ToShortDateString()</p>
+            </div>
+        </div>
+        <div class="row">
+            <hr class="col-lg-12" style="padding-right:0; padding-left:0;border-top: 1px solid #ccc;">
+        </div>
+    }*@
+}

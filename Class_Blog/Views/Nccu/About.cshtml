@@ -1,0 +1,125 @@
+﻿@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Styles.Render("~/Content/ntustindex")
+@model List<Class_Blog.Models.TeacherModels>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        .img-center {
+            margin: 0 auto;
+        }
+
+    </style>
+    <script src="~/Scripts/About.js"></script>
+    <link rel="stylesheet" href="@Url.Content("~/Content/ClassDetail.css")">
+</head>
+@{
+    @Html.Partial("_NavPartial");
+}
+<body>
+    <div style="width:100%; height:60px;"></div>
+    <div class="animsition">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2 class="page-header">授課教授</h2>
+                </div>
+                @{
+                    foreach (var teacher in Model)
+                    {
+                        if (teacher.Company.Equals("國立政治大學"))
+                        {
+                            <div class="col-lg-4 col-sm-6 col-xs-12 text-center block teacher-card-container">
+                                <div class="teacher-card" id="@teacher.ID" data-detail="@teacher.Detail" data-name="@teacher.Name" data-title="@teacher.Title">
+                                    <img class="img-circle img-responsive img-center" src="@Href(@teacher.PictureUrl)" alt="" width="200" height="200">
+                                    <h3>
+                                        @teacher.Name
+                                    </h3>
+                                    <p style="white-space: pre-line">@teacher.Title</p>
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+
+                @{
+                    bool HasCompanyTeacher = false;
+                    foreach (var teacher in Model)
+                    {
+                        if (!teacher.Company.Equals("國立政治大學"))
+                        {
+                            HasCompanyTeacher = true;
+                            break;
+                        }
+                    }
+                }
+                @if (HasCompanyTeacher)
+                {<div class="col-xs-12">
+                    <h2 class="page-header">授課業師</h2>
+                </div>
+                    foreach (var teacher in Model)
+                    {
+                        if (!teacher.Company.Equals("國立政治大學"))
+                        {
+                            <div class="col-lg-4 col-sm-6 col-xs-12 text-center block teacher-card-container">
+                                <div class="teacher-card" id="@teacher.ID" data-detail="@teacher.Detail" data-name="@teacher.Name" data-title="@teacher.Title">
+                                    <img class="img-circle img-responsive img-center" src="@Href(@teacher.PictureUrl)" alt="" width="200" height="200">
+                                    <h3>
+                                        @teacher.Name
+                                    </h3>
+                                    <p style="white-space: pre-line">@teacher.Title</p>
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+            </div>
+
+            <!-- Footer -->
+            <footer>
+                <div class="container">
+                    <div class="col-xs-12">
+                        <hr style="width: 100%; border-top: 1px solid #ccc; margin-top:50px;">
+                        <span class="copyright text-muted">Richard 2017</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <div class="teacher-detail-container">
+    </div>
+    <div id="teacher-detail" class="col-lg-8 col-lg-offset-2 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 teacher-detail">
+        <div class="col-xs-12">
+            <h2>老師簡介</h2>
+            <button type="button" class="close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <hr />
+            <div class="row navbar-inverse teacher-background col-xs-12">
+                <div class="col-sm-3 col-xs-12">
+                    <div id="picture"></div>
+                </div>
+                <div class="col-sm-9 col-xs-12">
+                    <div class="col-xs-12">
+                        <h3 id="name" style="text-align:center;"></h3>
+                    </div>
+                    <div class="col-xs-12">
+                        <h4 id="title" style="text-align:center; white-space: pre-line; line-height:30px;"></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-top:50px;">
+                <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+                    <h4 id="detail" style="margin-top:15px; font-weight:500; line-height:45px;"></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="https://use.typekit.net/wyd4emv.js"></script>
+<script>try { Typekit.load({ async: false }); } catch (e) { }</script>

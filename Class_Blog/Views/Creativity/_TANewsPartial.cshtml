@@ -1,0 +1,41 @@
+﻿@model IEnumerable <Class_Blog.Models.NewsClassModels>
+
+@{
+    var SchoolName = ViewBag.SchoolName;
+    foreach (var news in Model)
+    {
+        string Edit = string.Format("/{0}/Edit?ID={1}&Type={2}", SchoolName, news.ID, 1);
+
+        string Delete = string.Format("/{0}/Delete?ID={1}&Type={2}", SchoolName, news.ID, 1);
+
+        string Publish = String.Format("/{1}/Publish?ID={0}&Type=1", news.ID, SchoolName);
+        string Unpublish = String.Format("/{1}/Unpublish?ID={0}&Type=1", news.ID, SchoolName);
+        <div class="row">
+            <div class="post-preview  col-sm-10 col-sm-offset-1">
+                <span class="post-tag">@news.Tag</span>
+                <a href=@string.Format("/{2}/TAPost?ID={0}&Type={1}",news.ID,1,SchoolName)>
+                    <h3 class="post-title">
+                        @news.Title
+                    </h3>
+                    <h3 class="post-subtitle">
+                        @Html.Raw(@news.Lead)
+                    </h3>
+                </a>
+                <p class="post-meta">Posted by <a>@news.PostBy</a></p>
+            </div>
+        </div>
+        <a href=@Edit class="btn btn-info" role="button">Edit</a>
+        <button value=@Delete class="btn btn-danger" role="button">Delete</button>
+        if (news.Publish == 0)
+        {
+            <a href=@Publish class="btn btn-success" role="button">Publish</a>
+        }
+        else
+        {
+            <a href=@Unpublish class="btn btn-warning" role="button">Unpublish</a>
+        }
+        <div class="row">
+            <hr class="col-lg-12" style="padding-right:0; padding-left:0;border-top: 1px solid #ccc;">
+        </div>
+    }
+}

@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+@Scripts.Render("~/bundles/jquery")
+<html>
+<head>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    <!-- Contact Form JavaScript -->
+    <script src="@Url.Content("~/Scripts/jqBootstrapValidation.js")"></script>
+    <!-- Theme JavaScript -->
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/Creativity/style.css")">
+    <!-- Resource style -->
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet">
+    <!-- Theme CSS -->
+    <link href="@Url.Content("~/Content/clean-blog.min.css")" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="@Url.Content("~/Content/font-awesome.min.css")" rel="stylesheet" type="text/css">
+    <link href="@Url.Content("~/Content/Creativity/info.css")" rel="stylesheet">
+</head>
+@{
+    @Html.Partial("_NavPartial");
+}
+<body>
+
+    <div class="row" style="width:100%; height:50px;"></div>
+
+    <main class="cd-main-content animsition">
+        <div class="cd-fixed-bg cd-bg-1">
+            <h2 style="text-align:center; font-weight:800; top:35%;">學程介紹</h2>
+            <hr style="height:2px;border:none;background-color:white; margin-top:60px; top:35%;">
+            <span class="fa fa-chevron-down down" style="color:white; top:55%; font-size:2.5em;" aria-hidden="true"></span>
+        </div>
+        <!-- cd-fixed-bg -->
+        <div class="cd-scrolling-bg">
+            <div class="container" id="here">
+                <div class="row">
+                    <div class="wow col-xs-8 col-xs-offset-2 fadeInDown" style="text-align:center">
+                        <h2>學程介紹</h2>
+                    </div>
+                    <hr class="wow col-xs-4 col-xs-offset-4 fadeInUp" style="padding:0;height:1px;border:none;color:#aaa;background-color:#333;">
+                </div>
+                <div style="width:100%; height:25px;"></div>
+                <div class="row">
+                    <div class="wow col-sm-10 col-sm-offset-1 fadeInDown">
+                        <h4 style="line-height:2em;">臺師大、政大、臺科大創意界王牌盡出，以「創意」作為主軸議題，結合三校文創精英師資及資源，融入「創客」（HACKER）之學習概念，透過「作中學」（LEARNING BY DOING），以培養跨領域文創產業人才為使命，特推出「創意設計實務學分學程」，讓身逢創意戰國時代的你，在未來你死我活的職場爭霸中，擁有一手創意好牌，搶下第一步勝利。</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="wow col-sm-12 fadeInUp fadeInDown" style="text-align: center; margin-top:20px;">
+                        <a class="btn animsition-link" style="display: inline-block; text-align: center;" href="/Creativity/index">最新消息</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cd-fixed-bg cd-bg-2">
+            <h2 style="text-align:center; font-weight:800; top:35%;">學程特色</h2>
+            <hr style="height:2px;border:none;background-color:white; margin-top:60px; top:35%;">
+            <span class="fa fa-chevron-down down" style="color:white; top:55%; font-size:2.5em;" aria-hidden="true"></span>
+        </div>
+        <!-- cd-fixed-bg -->
+        <div class="cd-scrolling-bg" style="width:100%; background-color:#f8f8f8">
+            <div class="container">
+                <div class="row">
+                    <div class="wow col-md-7 fadeInDown">
+                        <h3>學程特色</h3>
+                        <hr style="height:1px;border:none;background-color:#aaa;">
+                        <h4 style="line-height:2em;">
+                            1.  跨系所、跨領域、跨校知識交換與融合。
+                        </h4>
+                        <h4 style="line-height:2em;">
+                            2.  集結三校文創精英師資及資源，集三校「企劃行銷」、「創意設計」、「商品實務」之專長領域。
+                        </h4>
+                        <h4 style="line-height:2em;">
+                            3.	三校文創人才共同學習，理論與實踐兼重。
+                        </h4>
+                        <h4 style="line-height:2em;">
+                            4.  透過「作中學」（LEARNING BY DOING），將創意或想法透過科技與藝術結合，轉變成真實的產品或服務。
+                        </h4>
+                        <h4 style="line-height:2em;">
+                            5.  修業完成將會頒發三校校長一同認證結業證書。
+                        </h4>
+                    </div>
+                    <div class="col-md-5 wow fadeInDown" style="vertical-align:middle;">
+                        <h3>招生影片</h3>
+                        <hr style="height:1px;border:none;background-color:#aaa;">
+                        <div class="videoWrapper" style="margin-top:35px;   padding-top:0px;">
+                            <video class="videoSize" src="~/img/Creativity/intro2.wmv" controls="controls"></video>
+                            <iframe class="videoSize" width="854" height="480" src="https://www.youtube.com/embed/OEkX7sOt5vw" frameborder="0" allowfullscreen></iframe>
+                            @*<iframe width="854" height="480" src="https://www.youtube.com/embed/2HDpTIMg-Pw" frameborder="0" allowfullscreen></iframe>*@
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="wow col-sm-12 fadeInUp" style="text-align: center; margin-top:20px;">
+                        <a class="btn animsition-link" style="display: inline-block; text-align: center;" href="/Creativity/index">最新消息</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cd-fixed-bg cd-bg-3">
+            <h2 style="text-align:center; font-weight:800; top:35%;">重要日程</h2>
+            <hr style="height:2px;border:none;background-color:white; margin-top:60px; top:35%;">
+            <span class="fa fa-chevron-down down" style="color:white; top:55%; font-size:2.5em;" aria-hidden="true"></span>
+        </div>
+        <!-- cd-fixed-bg -->
+        <div class="cd-scrolling-bg">
+
+            <div>
+                <section id="cd-timeline" class="cd-container" style="margin-top:0;">
+                    <div class="cd-timeline-block">
+                        <div class="wow cd-timeline-img cd-picture zoomIn">
+                            <i class="fa fa-calendar-check-o fa-lg"></i>
+                        </div>
+                        <!-- cd-timeline-img -->
+                        <div class="wow cd-timeline-content fadeInDown">
+                            <h2>FB粉絲專頁公告錄取名單</h2>
+                            @*<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
+                                <a href="/Ntust/index" class="cd-read-more">Read more</a>*@
+                            <span class="cd-date">2017/5/22</span>
+                        </div>
+                        <!-- cd-timeline-content -->
+                    </div>
+                    <!-- cd-timeline-block -->
+                    <div class="cd-timeline-block">
+                        <div class="wow cd-timeline-img cd-movie zoomIn">
+                            <i class="fa fa-book fa-lg"></i>
+                        </div>
+                        <!-- cd-timeline-img -->
+                        <div class="wow cd-timeline-content fadeInDown">
+                            <h2>「創意設計導論」課程</h2>
+                            @*<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde?</p>
+                                <a href="/Ntust/index" class="cd-read-more">Read more</a>*@
+                            <span class="cd-date">2017/6/26 ~ 2017/7/05</span>
+                        </div>
+                        <!-- cd-timeline-content -->
+                    </div>
+                    <!-- cd-timeline-block -->
+                    <div class="cd-timeline-block">
+                        <div class="wow cd-timeline-img cd-picture zoomIn">
+                            <i class="fa fa-paint-brush fa-lg"></i>
+                        </div>
+                        <!-- cd-timeline-img -->
+                        <div class="wow cd-timeline-content fadeInDown">
+                            <h2>成果展覽(暫定)</h2>
+                            @*<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, obcaecati, quisquam id molestias eaque asperiores voluptatibus cupiditate error assumenda delectus odit similique earum voluptatem doloremque dolorem ipsam quae rerum quis. Odit, itaque, deserunt corporis vero ipsum nisi eius odio natus ullam provident pariatur temporibus quia eos repellat consequuntur perferendis enim amet quae quasi repudiandae sed quod veniam dolore possimus rem voluptatum eveniet eligendi quis fugiat aliquam sunt similique aut adipisci.</p>
+                                <a href="/Ntust/index" class="cd-read-more">Read more</a>*@
+                            <span class="cd-date">2017/11月</span>
+                        </div>
+                        <!-- cd-timeline-content -->
+                    </div>
+                    <!-- cd-timeline-block -->
+                    <div class="cd-timeline-block">
+                        <div class="wow cd-timeline-img cd-location zoomIn">
+                            <i class="fa fa-book fa-lg"></i>
+                        </div>
+                        <!-- cd-timeline-img -->
+                        <div class="wow cd-timeline-content fadeInDown">
+                            <h2>「創意設計實務」課程(暫定)</h2>
+                            @*<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
+                                <a href="/Ntust/index" class="cd-read-more">Read more</a>*@
+                            <span class="cd-date">2018/6/25 ~ 2018/7/10</span>
+                        </div>
+                        <!-- cd-timeline-content -->
+                    </div>
+                </section>
+                <!-- cd-timeline -->
+            </div>
+            <footer>
+                <div class="container">
+                    <div class="col-xs-12">
+                        <hr style="width: 100%; border-top: 1px solid #ccc; margin-top:50px;">
+                        <span class="copyright text-muted">Richard 2017</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </main>
+</body>
+</html>
+<script src="https://use.typekit.net/wyd4emv.js"></script>
+<script>
+    try {
+        Typekit.load({
+            async: false
+        });
+    } catch (e) { }
+</script>

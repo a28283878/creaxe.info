@@ -1,0 +1,75 @@
+﻿.post-tag-school {
+    border-color: #2866AB;
+    color: #2866AB;
+}
+
+.post-tag-detail {
+    display: inline-block;
+    border-color: #073059;
+    color: #073059;
+    margin-top: 2px;
+}
+
+.tag {
+    color: #EDEDED;
+    background-color: #3E3E3E;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.img-center {
+    margin: auto;
+}
+
+.teacher-background {
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    margin: auto;
+    position: relative;
+    display: table;
+}
+
+.teacher-background > * {
+    z-index: 2;
+}
+
+.teacher-slide {
+    width: 280px;
+    height: 400px;
+    position: absolute;
+    background-color: #EEEEEE;
+    animation: rotatemagic 0.9s cubic-bezier(0.425, 1.14, 0.47, 1.125) 0.2s both;
+}
+
+a {
+    color: #609cd8;
+}
+
+@keyframes rotatemagic {
+    0% {
+        opacity: 0;
+        top: 0px;
+        left: -300px;
+        transform: rotate(0deg);
+    }
+
+    100% {
+        opacity:1;
+        top: -50px;
+        left: -70px;
+        transform: rotate(-25deg);
+    }
+}
+
+@media screen and (max-width: 768px){
+    .teacher-slide {
+        display:none;
+        width: 100%;
+        height: 220px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        animation:none;
+    }
+}

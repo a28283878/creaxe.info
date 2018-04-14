@@ -1,0 +1,72 @@
+﻿@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Styles.Render("~/Content/ntustindex")
+@model Class_Blog.Models.BlogViewModels
+
+@{
+    @Html.Partial("_NavPartial");
+}
+<div style="height:100px;"></div>
+@using (Html.BeginForm("Create", "Ntnu", FormMethod.Post))
+{
+    <div class="container col-xs-8 col-xs-offset-2">
+        <input type="number" name="Type" id="Type" value="1" style="display:none" />
+        <div class="form-group">
+            <label for="Title">Title</label>
+            <textarea type="text" class="form-control" name="Title" id="Title"></textarea>
+        </div>
+        <pre>最新消息圖片：
+    圖片位置:Title
+例如：
+    /img/Ntust/00000000-0000-0000-0000-000000000000.jpeg:測試發文
+            </pre>
+        <div class="form-group">
+            <label for="Tag">Tag</label>
+            <textarea type="text" class="form-control" name="Tag" id="Tag"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="Lead">Lead</label>
+            <textarea type="text" class="form-control" name="Lead" id="Lead"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="Context">Context</label>
+            <textarea type="text" class="form-control" name="Context" id="Context"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </div>
+}
+<div class="container col-xs-8 col-xs-offset-2">
+    <div style="height:50px;"></div>
+<pre>置入影片 : 
+    &lt;div class="videoWrapper"&gt;
+    &lt;iframe width="854" height="480" src="https://www.youtube.com/embed/2HDpTIMg-Pw" frameborder="0" allowfullscreen&gt&lt;/iframe&gt;
+    &lt;/div&gt;
+</pre>
+    <div style="height:50px;"></div>
+<pre>置入圖片 : 
+                   所占寬度
+    &lt;img style="width:100%;" class="embed-responsive-item" src="圖片位置"&gt;
+</pre>
+<pre>使用超連結 : 
+                 導向網址        顯示的文字
+    &lt;a href="www.google.com"&gt;www.google.com&lt;a&gt;
+結果：
+    <a href="www.google.com">www.google.com</a>
+</pre>
+</div>
+<footer>
+    <div class="container">
+        <div class="col-xs-12">
+            <hr style="width: 100%; border-top: 1px solid #ccc; margin-top:50px;">
+            <span class="copyright text-muted">Richard 2017</span>
+        </div>
+    </div>
+</footer>
+<script src="https://use.typekit.net/wyd4emv.js"></script>
+<script>
+    try {
+        Typekit.load({
+            async: false
+        });
+    } catch (e) { }
+</script>

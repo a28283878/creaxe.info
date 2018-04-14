@@ -1,0 +1,434 @@
+﻿@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Styles.Render("~/Content/ntustindex")
+@Scripts.Render("~/bundles/ntustindex")
+@model Class_Blog.Models.BlogViewModels
+<!DOCTYPE html>
+<html lang="en">
+@{
+    @Html.Partial("_NavPartial");
+}
+<head>
+    <script src="~/Scripts/Nccu/index.js"></script>
+    <style>
+        .tag {
+            color: #EDEDED;
+            background-color: #3E3E3E;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        .intro-banner {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+    <style>
+        a:focus, a:hover {
+            color: initial;
+        }
+
+        .post-title {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .top-word {
+            position: absolute;
+            top: 0;
+            opacity: 1;
+            color: white;
+            background-color: rgba(0,0,0,0.4);
+            width: 100%;
+            margin: 0px;
+        }
+
+            .top-word:hover {
+                opacity: 1;
+            }
+
+            .top-word > * {
+                margin: 0px;
+            }
+
+        .videoWrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            padding-top: 25px;
+            height: 0;
+        }
+
+        .videoWrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        .post-tag {
+            font-family: '微軟正黑體', 'Microsoft JhengHei';
+            top: 3px;
+            left: 10px;
+            font-size: 17px;
+            text-align: center;
+            padding: 3px 10px;
+            font-weight: 600;
+            border-style: solid;
+            border-color: #525252;
+            border-radius: 15px;
+            -webkit-border-radius: 15px;
+            -moz-border-radius: 15px;
+        }
+
+        .navbar-inverse {
+            background-color: #3E3E3E;
+            border-bottom: 0px;
+        }
+
+        .block {
+            padding: 15px;
+        }
+
+        .innerblock {
+            background-color: rgba(237,237,237,0.6);
+            border-radius: 10px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            text-align: center;
+            padding-top: 20px;
+            box-shadow: 2px 4px 5px #444;
+            -moz-box-shadow: 2px 4px 5px #444;
+            -webkit-box-shadow: 2px 4px 5px #444;
+        }
+
+        .newsblock {
+            background-color: rgba(237,237,237,0.6);
+            border-radius: 10px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            box-shadow: 2px 4px 5px #444;
+            overflow: hidden;
+            min-height: 180px;
+            margin: 20px auto;
+        }
+
+        .nopadding {
+            padding: 0;
+        }
+
+        .tag {
+            color: #EDEDED;
+            background-color: #3E3E3E;
+            padding: 5px;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+        }
+
+            .tag:after {
+                background-color: #3E3E3E;
+            }
+
+        .btn {
+            font-family: '微軟正黑體', 'Microsoft JhengHei';
+            border-color: #3E3E3E;
+            border-radius: 10px;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            transition: all .2s;
+            -webkit-transition: all .2s;
+            -o-transition: all .2s;
+            -moz-transition: all .2s;
+            padding: 10px 15px;
+            color: #3E3E3E;
+            background-color: #EDEDED;
+        }
+
+            .btn:hover {
+                color: white;
+                background-color: #405559;
+            }
+
+        .animate_block {
+            content: "";
+            position: absolute;
+            z-index: 10;
+            top: 0;
+            right: 0;
+            left: auto;
+            height: 100%;
+            width: 100%;
+            background-color: #EDEDED;
+            animation: school-animate cubic-bezier(0, 0, 0, 0.95) 1.7s;
+            -webkit-animation: school-animate cubic-bezier(0, 0, 0, 0.95) 1.7s;
+            -o-animation: school-animate cubic-bezier(0, 0, 0, 0.95) 1.7s;
+            -moz-animation: school-animate cubic-bezier(0, 0, 0, 0.95) 1.7s;
+            animation-fill-mode: forwards;
+            -webkit-animation-fill-mode: forwards;
+            -o-animation-fill-mode: forwards;
+            -moz-animation-fill-mode: forwards;
+            transform-origin: left center;
+            -webkit-transform-origin: left center;
+            -o-transform-origin: left center;
+            -moz-transform-origin: left center;
+        }
+
+        .img-hover {
+            transition: all .4s ease-in-out;
+        }
+
+        .is-over h3, .is-over h4, .is-over h5 {
+            color: #0085A1;
+        }
+
+        .is-over .img-hover {
+            transform: scale(1.1);
+        }
+
+        .is-leave .img-hover {
+            transform: scale(1);
+        }
+
+        .img-radius {
+            border-radius: 10px 0px 0px 10px;
+        }
+
+        .animate_block-right {
+            content: "";
+            position: absolute;
+            z-index: 10;
+            top: 0;
+            right: 0;
+            left: auto;
+            height: 100%;
+            width: 100%;
+            background-color: #EDEDED;
+            animation: school-animate cubic-bezier(0, 0, 0, 0.95) 1.7s;
+            -webkit-animation: school-animate cubic-bezier(0, 0, 0, 0.95) 1.7s;
+            -o-animation: school-animate cubic-bezier(0, 0, 0, 0.95) 1.7s;
+            -moz-animation: school-animate cubic-bezier(0, 0, 0, 0.95) 1.7s;
+            animation-fill-mode: forwards;
+            -webkit-animation-fill-mode: forwards;
+            -o-animation-fill-mode: forwards;
+            -moz-animation-fill-mode: forwards;
+            transform-origin: right center;
+            -webkit-transform-origin: right center;
+            -o-transform-origin: right center;
+            -moz-transform-origin: right center;
+        }
+
+        .text-shadow {
+            color: whitesmoke;
+            text-shadow: 4px 4px 10px black;
+        }
+
+        .school-block {
+            background: #4E4E4E;
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            box-shadow: 0 0 10px;
+        }
+
+            .school-block:before {
+                background-color: #3E3E3E;
+            }
+
+        .school-sign {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background-color: #EDEDED;
+        }
+
+        .school-sign-right {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background-color: #EDEDED;
+        }
+
+            .school-sign > img, .school-sign-right > img {
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%);
+                -o-transform: translateX(-50%);
+                -webkit-transform: translateX(-50%);
+                -moz-transform: translateX(-50%);
+                width: 95%;
+                padding: 15%;
+            }
+
+        .school-content {
+            padding-bottom: 20px;
+        }
+
+        @@keyframes school-animate {
+            from {
+            }
+
+            to {
+                transform: scaleX(0) translateZ(0);
+            }
+        }
+
+        @@media screen and (max-width: 767px) {
+            .school-sign {
+                padding-top: 20px;
+                padding-bottom: 20px;
+                border-radius: 5px;
+                background-color: #EDEDED;
+            }
+
+            .school-block {
+                padding-top: 10px;
+                padding-bottom: 10px;
+                background: #4E4E4E;
+                border-radius: 5px;
+                box-shadow: 0 0 10px;
+            }
+
+            .img-radius {
+                border-radius: 10px 10px 0px 0px;
+            }
+            /*.innerblock {
+                transform: translateY( calc( -50% - 20px) );
+            }*/
+        }
+    </style>
+    <script>
+        $(function () {
+            $(".newsblock").hover(function () {
+                $(this).addClass("is-over");
+            }, function () {
+                $(this).removeClass("is-over");
+                $(this).addClass("is-leave").delay(200).removeClass("is-leave");
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <div class="animsition">
+        <div class="row" style="width:100%; height:50px;"></div>
+        <div>
+            <img src="~/img/nccu/intro.jpg" class="intro-banner" />
+        </div>
+
+        <div id="here"></div>
+        @*@{
+                if (Model.Emergency != null)
+                {
+                    <hr style="width: 100%; border-top: 1px solid #ccc; margin-bottom:1px;">
+                    <div class="row" style="width:100%; margin:0">
+                        <p><h2 style="text-align:center; margin:0px; line-height:2px; color:#FF4545">@Model.Emergency.Title</h2></p>
+                        <p><h3 style="text-align:center; margin:0px; line-height:2px; color:#FF4545">@Model.Emergency.Lead</h3></p>
+                    </div>
+                    <hr style="width: 100%; border-top: 1px solid #ccc; margin-top:1px;">
+                }
+            }*@
+
+        <div id="newpagehere" style="height:50px;"></div>
+        <div class="container">
+            <h2 class="tag">最新消息</h2>
+            @{
+                Html.RenderAction("NewsPartial", new { Pages = 0 });
+            }
+        </div>
+        <div class="row" style="margin:0;">
+            @*<div class="container col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1" style="padding:0;">
+                <ul class="nav nav-tabs" style="border-color:#aaa;">
+                    <li id="recent-tab" role="presentation" class="active"><a style='font-family: "微軟正黑體", "Microsoft JhengHei"; font-weight:500;'>最新消息</a></li>
+                    <!--<li id="post-tab" role="presentation"><a href="#post1"style='font-family: "微軟正黑體", "Microsoft JhengHei";  font-weight:500;'>課程發文</a></li>-->
+                            </ul>
+                        </div>*@
+            <!-- Main Content -->
+            @*<div id="recent" class="board container col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="post-preview col-lg-10 col-xs-offset-1">
+                                    <h2 class="post-title">
+                                        最新消息
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <hr class="col-lg-12" style="padding-right:0; padding-left:0;border-top: 1px solid #ccc;">
+                            </div>
+                            <div id="NewsPartial">
+                                @{
+                                    Html.RenderAction("NewsPartial", new { Pages = 0 });
+                                }
+                            </div>
+                            <!-- Pager -->
+                            <ul class="pager">
+                                @{
+                                    int Newspages = (Model.NewsNum - 1) / 5;
+                                    for (int i = 0; i <= Newspages; i++)
+                                    {
+                                        <li>
+                                            <a href="#new@(i+1)"class="Newspage">@(i + 1)</a>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                            <br>
+                        </div>
+                    </div>
+                </div>*@
+            <!-- Main Content -->
+            @*<div id="post" class="container col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 board" style="display:none;">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="post-preview col-lg-10 col-xs-offset-1">
+                                    <h2 class="post-title">
+                                        課程發文
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <hr class="col-lg-12" style="padding-right:0; padding-left:0;border-top: 1px solid #ccc;">
+                            </div>
+                            <div id="PostPartial">
+                                @{
+                                    Html.RenderAction("PostPartial", new { Pages = 0 });
+                                }
+                            </div>
+                            <ul class="pager">
+                                @{
+                                    int Postpages = (Model.PostNum - 1) / 5;
+                                    for (int i = 0; i <= Postpages; i++)
+                                    {
+                                        <li>
+                                            <a href="#post@(i+1)" class="Postpage">@(i + 1)</a>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                            <br>
+                        </div>
+                    </div>
+                </div>*@
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <div class="col-xs-12">
+                <hr style="width: 100%; border-top: 1px solid #ccc; margin-top:50px;">
+                <span class="copyright text-muted">Richard 2017</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+<script src="https://use.typekit.net/wyd4emv.js"></script>
+<script>try { Typekit.load({ async: false }); } catch (e) { }</script>
